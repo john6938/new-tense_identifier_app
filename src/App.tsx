@@ -40,15 +40,15 @@ export default function App() {
           <div className="flex items-center gap-3 mb-6">
             <img
               src={`${import.meta.env.BASE_URL}jb_logo_small.jpg`}
-              alt="Finite Verb Phrase Annotator logo"
+              alt="Tense Identifier"
               className="w-11 h-11 shrink-0 rounded"
             />
             <div>
               <h1 className="text-2xl font-bold leading-tight text-gray-900">
-                Finite Verb Phrase Annotator
+                Tense Identifier
               </h1>
               <p className="text-sm text-gray-500">
-                Identify and classify verb phrases in English text
+                Identify and classify verb phrases in English texts
               </p>
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function App() {
 
           {/* Footer */}
           <div className="mt-6 pt-4 border-t border-gray-100 text-center text-xs text-gray-400">
-            <p>John Blake, Aston University. Version 1.0.</p>
+            <p>John Blake, Aston University. Version 3.0.</p>
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@ export default function App() {
               className="w-8 h-8 shrink-0 rounded"
             />
             <span className="font-semibold text-gray-900 text-base hidden sm:block">
-              Finite Verb Phrase Annotator
+              Tense Identifier
             </span>
           </div>
 
