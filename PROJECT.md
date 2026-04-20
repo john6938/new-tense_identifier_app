@@ -210,29 +210,43 @@ Final palette to be confirmed from Figma prototype.
 - [x] Review Figma prototype files
 - [x] Extract UI design decisions (colours, layout, typography) from Figma
 - [x] Document project in PROJECT.md
-- [ ] Initialise git and push to https://github.com/john6938/new-tense_identifier_app
-- [ ] Install dependencies (`pnpm install`) and verify dev server runs
+- [x] Initialise git and push to https://github.com/john6938/new-tense_identifier_app
+- [x] Install dependencies and verify dev server runs (`npm run dev`)
 
-### Phase 1 — Version 1 (Compromise.js) — improve prototype
+### Phase 1 — Version 1 (Compromise.js) — COMPLETE
 
-#### Infrastructure (already implemented in prototype)
+**Stack**: React 18 + TypeScript + Vite 5 + Tailwind CSS 3 + compromise.js + npm
+**Tool name**: Tense Identifier v3.0
+**Repo**: https://github.com/john6938/new-tense_identifier_app
+**Live (GitHub Pages)**: https://john6938.github.io/new-tense_identifier_app/
+
+#### Infrastructure
 - [x] Dual-mode workspace (input/output)
 - [x] `.txt` file upload → populate workspace
-- [x] Mode switching (Edit Text / Analyze Text buttons)
-- [x] Click/tap tooltip display (VerbPhraseAnnotator)
-- [x] Collapsible legend panel (LegendPanel)
+- [x] Mode switching (Edit Text / Analyse Text buttons)
+- [x] Click/tap tooltip display (async-ready for SpaCy swap)
+- [x] Collapsible legend/guide panel
 - [x] Sample text loader
+- [x] Logo (`jb_logo_small.jpg`) and favicon in `public/`
+- [x] Footer with version number (3.0)
 
-#### NLP Engine — fixes needed
-- [ ] Fix `isLikelyVerb()` — reduce false positives; rely more on compromise POS tags, not just word endings
-- [ ] Fix `matchesPattern()` to handle contracted forms (`I'm`, `she's`, `they've`, `he'd`, etc.) — expand/normalize tokens before matching
-- [ ] Fix or constrain `parseSimpleVerb()` — require genuine finite verb POS from compromise, not just morphology heuristics
-- [ ] Add question handling (inverted auxiliary order: *Has she left?*, *Will he come?*)
-- [ ] Decide and implement negation policy (skip `not`/`n't` in span, or include — document the decision)
-- [ ] Clarify `shall` treatment — remit implies `shall` = future (tensed), not core modal; adjust accordingly
-- [ ] Improve semi-modal detection with contracted auxiliaries (`I'm going to`, `she's supposed to`)
-- [ ] Add coordination / auxiliary ellipsis handling (*I have seen and tested it*)
-- [ ] Add graceful fallback — if classification uncertain, don't label rather than mislabel
+#### NLP Engine (VerbPhraseAnalyzer.ts)
+- [x] `analyzeVerbPhrases()` is async — SpaCy API swap requires only setting `VITE_API_URL`
+- [x] Shared `VerbPhrase` interface in `src/types.ts` — identical contract for both v1 and v2
+- [x] Contraction handling via compromise root/lemma forms
+- [x] Semi-modal detection with verb-after-`to` guard (prevents `going to the shop` false positives)
+- [x] Negation skipped in do-support constructions (`did not go`)
+- [x] `shall` treated as core modal (per spec)
+- [x] `will` / `'ll` treated as future tensed (per spec)
+- [x] All 8 structural patterns for modals and semi-modals
+- [x] Expanded irregular past participle list (160+ forms)
+- [x] `parseSimpleVerb` gated on compromise `isFinite` flag to reduce false positives
+- [x] Graceful loading/error states in annotator
+
+#### Deployment
+- [x] GitHub Actions workflow (auto-deploys on push to master)
+- [x] GitHub Pages live: https://john6938.github.io/new-tense_identifier_app/
+- [ ] GoDaddy cPanel build (`npm run build:godaddy`) — next session
 
 #### NLP Engine
 - [ ] Integrate compromise.js
