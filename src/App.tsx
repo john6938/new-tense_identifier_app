@@ -100,7 +100,7 @@ export default function App() {
 
           {/* Footer */}
           <div className="mt-6 pt-4 border-t border-gray-100 text-center text-xs text-gray-400">
-            <p>John Blake, Aston University. Version 3.0.</p>
+            <p>John Blake, Aston University. Version 4.0.</p>
           </div>
         </div>
       </div>
@@ -176,6 +176,11 @@ export default function App() {
           </div>
         )}
       </div>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-gray-100 px-4 py-2 text-center text-xs text-gray-400 shrink-0">
+        John Blake, Aston University. Version 4.0.
+      </footer>
     </div>
   );
 }
